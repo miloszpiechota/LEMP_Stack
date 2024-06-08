@@ -13,28 +13,28 @@ W pliku docker_compose.yml dodałem:
 
 W pliku default.conf zawarta jest konfiguracja servera Nginx, gdzie znajduje się nasłuchiwanie na porcie 80, określam katalog główny /usr/share/nginx/html z plikami indeksowymi. 
 
-Wyniki działania aplikacji:
+##Wyniki działania aplikacji:
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/9ed88f99-b894-4f30-8bbd-e89325433a3f)
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/72636ca7-9178-4e66-a6f2-169b6567bf03)
 
 
-Zalogowanie się do bazy danych 
+##Zalogowanie się do bazy danych 
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/079fcbf2-a77d-4b19-863f-207d551a5912)
 
 
-Dostepna baza danych "test_db" 
+##Dostepna baza danych "test_db" 
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/52a6ce3f-f237-476e-ab41-84308cfc23f7)
 
 
-Nieudana próba połączenia z http://localhost:4001 -> "File not found"
+##Nieudana próba połączenia z http://localhost:4001 -> "File not found"
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/33237e74-2903-4253-bea4-aa99046518aa)
 
-Sprawdzenie logów php i nginx:
+##Sprawdzenie logów php i nginx:
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/26e7bbac-1247-4706-94d6-fb1c71bbff44)
 
@@ -42,13 +42,13 @@ Sprawdzenie logów php i nginx:
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/1279e78e-d8d2-43a8-b587-3e9279a98522)
 
-Błąd 404 wskazuje na brak odnalezienia pliku index.php.
+##Błąd 404 wskazuje na brak odnalezienia pliku index.php.
 
-Sprawdzenie uprawnień:
+##Sprawdzenie uprawnień:
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/e349cc1c-76db-45a9-937f-49407f9e5025)
 
-Uruchomienie powłoki Bash w celu dostepu do kontenera:
+##Uruchomienie powłoki Bash w celu dostepu do kontenera:
 
 ![image](https://github.com/miloszpiechota/LEMP_Stack/assets/161620373/590edbca-c40d-421f-8c0e-7cfc745eddba)
 
