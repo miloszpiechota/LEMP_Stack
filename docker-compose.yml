@@ -1,0 +1,65 @@
+
+version: "3.2"  # wersja do Docker Compose
+
+services:  
+
+  # konfiguracja serwera Nginx
+  nginx:
+    image: nginx:1.21.6  #  Nginx w wersji 1.21.6
+    container_name: nginx  
+    volumes:  
+      - ./nginx/conf.d:/etc/nginx/conf.d  # mapowanie konfiguracji Nginx
+      - ./html:/usr/share/nginx/html  # mapowanie katalogu HTML
+    ports:  
+      - "4001:80"  # Przekierowanie portu 4001 na port 80 w kontenerze
+    networks:  
+      - backend  # dołączenie do sieci backend
+      - frontend  # dołączenie do sieci frontend
+    depends_on:  # definicja zależności
+      - php  
+      - mysql  
+
+  # Konfiguracja serwera PHP
+  php:
+    image: php:8.0-fpm  #  PHP w wersji 8.0-fpm
+    container_name: php  
+    volumes:  
+      - ./html:/var/www/html  # mapowanie katalogu HTML
+    networks:  
+      - backend  
+
+  
+  mysql:
+    image: mysql:8.0.33  #obraz MySQL w wersji 8.0.33
+    container_name: mysql  
+    environment:  
+      MYSQL_ROOT_PASSWORD: root_password  
+      MYSQL_DATABASE: test_db 
+      MYSQL_USER: test_user 
+      MYSQL_PASSWORD: test_password  
+    volumes:  
+      - mysql_data:/var/lib/mysql  # mapowanie danych MySQL
+    networks:  
+      - backend  # dołączenie do sieci backend
+
+  
+  phpmyadmin:
+    image: phpmyadmin:5.1.1  #  obraz phpMyAdmin w wersji 5.1.1
+    container_name: phpmyadmin  # Nazwa kontenera phpMyAdmin
+    environment:  
+      PMA_HOST: mysql  # host bazy danych MySQL
+      PMA_PORT: 3306  # port bazy danych MySQL
+      MYSQL_ROOT_PASSWORD: root_password  # hasło dla użytkownika root
+    ports:  
+      - "6001:80"  # przekierowanie portu 6001 na port 80 w kontenerze
+    networks:  
+      - backend  # Dołączenie do sieci backend
+
+volumes:  
+  mysql_data:  #dla danych
+
+networks:  
+  backend:  
+    driver: bridge  #  mostek jako sterownika sieci
+  frontend:  
+    driver: bridge  
