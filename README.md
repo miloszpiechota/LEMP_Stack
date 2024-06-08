@@ -4,8 +4,11 @@
 
 W pliku docker_compose.yml dodałem:
 1.Konfiguracje servera PHP, gdzie definiowany jest obraz i tworzony kontener php. Następnie mapuję lokalny katalog ./html do katalogu /var/www/html w kontenerze, co powinno umożliwić dostęp do plików PHP. Na konieć dołączam server PHP do sieci backend.
+
 2.Konfiguracje servera MySQL, gdzie definiowany jest obraz i tworzony kontener mysql. Ustawiane są zmienne środowiskowe jak hasło dla użytkownika root i dane do bazy. Następnie mapuję wolumin mysql_data do katalogu /var/lib/mysql w kontenerze, aby zachować trwałość danych bazy danych MySQL. Na koniec dołączam server do backend.
+
 3.W sekcji phpMyAdmin tworzę kontener phpmyadmin, ustawiam zmienne takie jak adres hosta i port bazy oraz hasło root, kieruję port 6001 hosta na port 80 kontenera, umożliwiając dostęp do phpMyAdmin z przeglądarki. Na koniec dołączam do sieci backend.
+
 4.Definiuję server Nginx wraz z kontenerem nginx. Mapuję lokalne konfiguracje Nginx (./nginx/conf.d) i katalog HTML (./html) do odpowiednich katalogów w kontenerze. Przekierowuję port 4001 hosta na port 80 kontenera aby działało na przeglądarce. Na koniec Dołącza serwer Nginx do sieci backend i frontend.
 
 W pliku default.conf zawarta jest konfiguracja servera Nginx, gdzie znajduje się nasłuchiwanie na porcie 80, określam katalog główny /usr/share/nginx/html z plikami indeksowymi. 
